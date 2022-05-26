@@ -36,6 +36,10 @@ ENV TORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST}"
 SHELL ["/bin/bash", "-ec"]
 RUN sudo apt install -y tmux
 
+ENV nnUNet_raw_data_base="/nnUNet_files/nnUNet_raw_data_base"
+ENV nnUNet_preprocessed="/nnUNet_files/nnUNet_preprocessed"
+ENV RESULTS_FOLDER="/nnUNet_files/nnUNet_trained_models"
+
 # FROM bitnami/pytorch
 
 # create a non-root user

@@ -24,7 +24,8 @@ RUN wget https://bootstrap.pypa.io/pip/3.6/get-pip.py && \
 # See https://pytorch.org/ for other options if you use a different version of CUDA
 RUN pip install --user tensorboard cmake   # cmake from apt-get is too old
 RUN pip install --user torch==1.10 torchvision==0.11.1 -f https://download.pytorch.org/whl/cu111/torch_stable.html
-RUN pip install --user nnunet
+# RUN pip install --user nnunet
+RUN git clone https://github.com/meglaficus/nnUNet.git && cd nnUNet && pip install -e .
 
 ENV FORCE_CUDA="1"
 # This will by default build detectron2 for all common cuda architectures and take a lot more time,
@@ -38,6 +39,7 @@ RUN sudo apt install -y tmux
 
 RUN cd /home/appuser
 RUN sudo mkdir nnUNet_files
+RUN sudo mkdir outputs
 
 ENV nnUNet_raw_data_base="/home/appuser/nnUNet_files/nnUNet_raw_data_base"
 ENV nnUNet_preprocessed="/home/appuser/nnUNet_files/nnUNet_preprocessed"

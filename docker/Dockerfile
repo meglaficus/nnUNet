@@ -2,8 +2,8 @@ FROM nvidia/cuda:11.3.0-cudnn8-devel-ubuntu18.04
 # use an older system (18.04) to avoid opencv incompatibility (issue#3524)
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN rm /etc/apt/sources.list.d/cuda.list
-RUN rm /etc/apt/sources.list.d/nvidia-ml.list
+# RUN rm /etc/apt/sources.list.d/cuda.list
+# RUN rm /etc/apt/sources.list.d/nvidia-ml.list
 RUN apt-get update && apt-get install -y \
 	python3-opencv ca-certificates python3-dev git wget sudo ninja-build
 RUN ln -sv /usr/bin/python3 /usr/bin/python
@@ -41,7 +41,6 @@ RUN sudo apt install -y tmux
 
 RUN cd /home/appuser
 RUN sudo mkdir nnUNet_files
-RUN sudo mkdir outputs
 
 ENV nnUNet_raw_data_base="/home/appuser/nnUNet_files/nnUNet_raw_data_base"
 ENV nnUNet_preprocessed="/home/appuser/nnUNet_files/nnUNet_preprocessed"
